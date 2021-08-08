@@ -1,0 +1,23 @@
+/*
+Template Name: Adminto Dashboard
+Author: CoderThemes
+Email: coderthemes$gmail.com
+File: Core
+*/
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,regular,500,600,700,800,900);
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700);
+
+// Icons
+// @import "~font-awesome/scss/font-awesome";
+// @import "./icons/boxicons-2.0.7/css/boxicons.min.css";
+
+// App style
+@import "site/colors";
+@import "site/shadow";
+@import "site/variables";
+@import "site/core";
+@import "site/components";
+// @import "site/pages";
+@import "site/menu";
+@import "site/responsive";
+@import "site/custom";

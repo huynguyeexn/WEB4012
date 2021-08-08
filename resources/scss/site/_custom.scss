@@ -1,0 +1,165 @@
+.carousel {
+    a {
+        color: $white;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+    .carousel-caption {
+        right: 0;
+        left: 0;
+        bottom: 0;
+        background: linear-gradient(
+            0,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.5) 80%,
+            rgba(255, 255, 255, 0) 95%
+        );
+        padding: 30px 30px 30px 30px;
+    }
+}
+.nav-tabs {
+    border: 0;
+    a {
+        color: $primary;
+    }
+    .nav-link {
+        background-color: $white;
+        box-shadow: $shadow-md;
+        border: 0;
+        &:hover {
+            border: 0;
+            background-color: $primary;
+            color: $white;
+        }
+    }
+
+    .nav-link.active,
+    .nav-item.show .nav-link {
+        background-color: $primary;
+        color: $white;
+    }
+}
+
+.accordion {
+    .list-group-item {
+        padding: 0;
+        a {
+            display: block;
+            padding: 0.75rem 1.25rem;
+        }
+    }
+}
+
+#post-content {
+    .content {
+        font-size: 1.1rem;
+        line-height: 2rem;
+        font-weight: 400;
+        font-family: "Roboto";
+
+        a {
+            color: $primary;
+        }
+
+        div {
+            margin-bottom: 2rem;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+}
+.card {
+    border-radius: 10px;
+}
+
+.login-btn {
+    .google {
+        background-color: #ea4335;
+        &:hover {
+            background-color: #ce3d30;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .facebook {
+        background-color: #1877f2;
+        &:hover {
+            background-color: #166ad6;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .github {
+        background-color: #333;
+        &:hover {
+            background-color: #222;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .gitlab {
+        background-color: #fca326;
+        &:hover {
+            background-color: #da8d22;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .microsoft {
+        background-color: #00a1f1;
+        &:hover {
+            background-color: #008dd3;
+        }
+        h3 {
+            color: white;
+        }
+    }
+
+    .twitter {
+        background-color: #1da1f2;
+        &:hover {
+            background-color: #1a8bd1;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .twitch {
+        background-color: #9146ff;
+        &:hover {
+            background-color: #7b3adc;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .discord {
+        background-color: #7289da;
+        &:hover {
+            background-color: #6174ba;
+        }
+        h3 {
+            color: white;
+        }
+    }
+    .tiktok {
+        background-color: #111111;
+        &:hover {
+            background-color: #000000;
+        }
+        h3 {
+            color: white;
+        }
+    }
+}
+
+.bx {
+    font-size: 1.1rem;
+}
