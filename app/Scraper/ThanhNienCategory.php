@@ -12,6 +12,7 @@ class ThanhNienCategory
 {
     public function scrape()
     {
+        $index = 0;
         $url = 'https://thanhnien.vn/rss.html';
 
         $client = new Client();
@@ -19,8 +20,7 @@ class ThanhNienCategory
         $crawler = $client->request('GET', $url);
 
         $crawler->filter('.rss-list > ul > li')->each(
-            function (Crawler $node) use (&$result) {
-                $index = 0;
+            function (Crawler $node) use (&$result,  &$index) {
 
                 $category = new Category();
                 $category->name = $node->children()->filter('a')->first()->text();
@@ -29,6 +29,7 @@ class ThanhNienCategory
 
                 $category->slug = $slug;
                 $category->rss_link = $node->children()->filter('a')->first()->attr('href');
+                $category->order = ++$index;
                 $category->save();
 
                 $id = $category->id;
@@ -36,7 +37,7 @@ class ThanhNienCategory
 
                 if ($node->children()->count() > 1) {
                     $node->children()->filter('ul li a')->each(
-                        function ($child) use ($id, $slug, $index) {
+                        function ($child) use ($id, $slug, &$index) {
                             $category = new Category();
                             $category->name = $child->text();
                             $category->slug = $slug . "/" . Str::of($category->name)->slug('-');
