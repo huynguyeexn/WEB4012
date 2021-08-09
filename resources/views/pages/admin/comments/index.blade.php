@@ -8,13 +8,10 @@
         <div class="card">
             <div class="p-4 card-body">
                 <div class="mb-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.tags.deleted') }}" type="button" class="me-2 btn btn-outline-secondary">
+                    <a href="{{ route('admin.comments.deleted') }}" type="button"
+                        class="me-2 btn btn-outline-secondary">
                         <i class='bx bx-trash-alt'></i>
                         Thùng rác
-                    </a>
-                    <a href="{{ route('admin.tags.create') }}" type="button" class="btn btn-primary">
-                        <i class='bx bx-plus'></i>
-                        Thêm thẻ mới
                     </a>
                 </div>
                 <div class="row">
@@ -22,45 +19,38 @@
                         {{ $data->links() }}
                     </div>
                 </div>
-                <table class="table p-2 table-striped" id="tag" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">Tên thẻ</th>
-                            <th class="text-center">Số bài viết</th>
-                            <th class="text-center">Cập nhật</th>
-                            <th class="text-center"></th>
-                        </tr>
-                    </thead>
+                <table class="table p-2 table-striped" id="comment" style="width:100%">
                     <tbody>
                         @foreach ($data as $row)
                             <tr>
-                                <td class="text-center">#{{ $row->id }}</td>
-
+                                <td>
+                                    <div class="avatar avatar-md">
+                                        <img src="{{ $row->user->avatar }}">
+                                    </div>
                                 </td>
-                                <td class="text-center">
-                                    {{ $row->name }}
+                                <td class="col-auto">
+                                    <p class="mb-0">
+                                        <span class="font-bold"> {{ $row->user->name }}</span>
+                                        <small>{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}</small>
+                                    </p>
+                                    <figure class="mb-0 ">
+                                        <blockquote>
+                                            <p>{{ $row->content }}</p>
+                                        </blockquote>
+                                        <figcaption class="mb-0 blockquote-footer text-muted">
+                                            Bài viết: <a
+                                                href="{{ route('post', $row->post->slug) }}">{{ $row->post->title }}</a>
+                                        </figcaption>
+                                    </figure>
                                 </td>
-                                <td class="text-center">
-                                    {{ $row->countPost() }}
-                                </td>
-                                <td class="text-center">
+                                {{-- <td class="text-center">
                                     <p class="p-0 m-0">{{ \Carbon\Carbon::parse($row->updated_at) }}</p>
                                     <small>{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}</small>
-                                </td>
+                                </td> --}}
 
                                 <td class="text-center">
                                     <div class="mb-3 btn-group" role="group" aria-label="Basic example">
-                                        <div>
-
-                                            <a href="{{ route('admin.tags.edit', $row->id) }}" type="button"
-                                                class="border-0 btn icon btn-outline-secondary" data-bs-toggle="tooltip"
-                                                data-bs-placement="top" title="Chỉnh sửa">
-                                                <i class='bx bx-edit-alt'></i>
-                                            </a>
-                                        </div>
-
-                                        <form action="{{ route('admin.tags.destroy', $row->id) }}" method="POST">
+                                        <form action="{{ route('admin.comments.destroy', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -88,12 +78,6 @@
                     <i class='bx bx-trash-alt'></i>
                     Thùng rác
                 </button>
-
-                <button type="button" class="btn btn-primary">
-                    <i class='bx bx-plus'></i>
-                    Thêm thẻ mới
-                </button>
-
             </div>
         </div>
     </div>

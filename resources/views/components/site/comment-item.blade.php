@@ -14,7 +14,6 @@
         <p class="mb-0 font-13 ">
             {{ $comment->content }}
         </p>
-        <a href="" class="mr-2 text-success font-13"><i class='mr-1 bx bx-paper-plane'></i>Trả lời</a>
         <a href="" class="mr-2 text-primary font-13"><i class='mr-1 bx bx-like'></i>{{ $comment->like }} Thích</a>
     </div>
 </div>

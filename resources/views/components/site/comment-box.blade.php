@@ -21,6 +21,8 @@
                     </form>
                 </div>
             </div>
+        @else
+            <p>Vui lòng <a class="text-primary" href="{{ route('login') }}">đăng nhập</a> để có thể bình luận</p>
         @endauth
         @foreach ($comments as $cmt)
             <x-comment-item :data="$cmt"></x-comment-item>

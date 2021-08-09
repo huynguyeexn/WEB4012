@@ -18,16 +18,9 @@ class CommentController extends Controller
     public function index()
     {
         //
-    }
+        $all = Comment::paginate(15);
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('pages.admin.comments.index', ['data' => $all]);
     }
 
     /**
@@ -47,30 +40,8 @@ class CommentController extends Controller
 
         $comments->save();
 
-        Toastr::success('','Đã gửi ý kiến của bạn!');
+        Toastr::success('', 'Đã gửi ý kiến của bạn!');
         return redirect()->route('post', ['slug' => $request->slug]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Comment $comment)
-    {
-        //
     }
 
     /**
@@ -94,5 +65,55 @@ class CommentController extends Controller
     public function destroy(Comment $comment)
     {
         //
+        try {
+            $comment->delete();
+            Toastr::success('Ý kiến đã được chuyển vào thùng rác.', 'Thành công!');
+            return redirect()->route('admin.comments.index');
+        } catch (\Throwable $th) {
+            //throw $th;
+            Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
+            return redirect()->route('admin.comments.index');
+        }
+    }
+
+
+    public function deleted()
+    {
+        //
+        $all =  Comment::onlyTrashed()->paginate(15);
+        return view('pages.admin.comments.deleted', ['data' => $all]);
+    }
+
+
+    public function restore($id)
+    {
+        //
+        try {
+            Comment::withTrashed()->find($id)->restore();
+            Toastr::success('Ý kiến đã được khôi phục.', 'Thành công!');
+            return redirect()->route('admin.comments.deleted');
+        } catch (\Throwable $th) {
+            throw $th;
+            Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
+            return redirect()->route('admin.comments.deleted');
+        }
+    }
+
+
+    public function remove($id)
+    {
+        //
+        try {
+            Comment::withTrashed()
+                ->where('id', $id)
+                ->forceDelete();
+
+            Toastr::success('Ý kiến đã bị xóa.', 'Thành công!');
+            return redirect()->route('admin.comments.deleted');
+        } catch (\Throwable $th) {
+            //throw $th;
+            Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
+            return redirect()->route('admin.comments.deleted');
+        }
     }
 }

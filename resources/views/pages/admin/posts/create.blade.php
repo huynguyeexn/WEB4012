@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                             <label for="content">Nội dung</label>
-                            <textarea name="content" id="content" cols="30" rows="20" required></textarea>
+                            <textarea name="content" id="content" cols="30" rows="20"></textarea>
                         </div>
                     </div>
                 </div>
@@ -50,6 +50,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group">
+                            <label for="">Thẻ</label>
+                            <select class="form-select" id="validationTags" name="tags[]" multiple data-allow-new="true">
+                                <option selected disabled hidden value="">Gõ tên thẻ và nhấn enter...</option>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <div class="form-check">
                                 <div class="checkbox">
@@ -106,5 +113,10 @@
         document.getElementById('thumb').addEventListener('change', function(e) {
             readURL(this);
         })
+    </script>
+
+    <script type="module">
+        import Tags from "../../../assets/admin/vendors/bootstrap5-tags-master/tags.min.js";
+        Tags.init();
     </script>
 @endsection

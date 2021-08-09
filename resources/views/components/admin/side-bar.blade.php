@@ -36,6 +36,12 @@
                         <span>Thẻ</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ request()->is('admin/comments*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.comments.index') }}" class='sidebar-link'>
+                        <i class='bx bx-comment-dots'></i>
+                        <span>Ý kiến</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

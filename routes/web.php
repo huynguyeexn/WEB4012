@@ -72,6 +72,9 @@ Route::get('/trang-chu', [PageController::class, 'index'])->name('home');
 Route::get('bai-viet/{slug}', [PageController::class, 'post'])->name('post');
 Route::post('bai-viet/{slug}', [CommentController::class, 'store'])->name('commentPost');
 
+// <-- THẺ --> //
+Route::get('tag/{slug}', [PageController::class, 'tag'])->name('tag');
+
 // <-- CHUYÊN MỤC --> //
 Route::get('chuyen-muc/{parent}/{child?}', [PageController::class, 'category'])->name('category');
 Route::get('search', [PostController::class, 'search'])->name('search');
@@ -120,6 +123,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin', '
         Route::get('/deleted', [TagController::class, 'deleted'])->name('deleted');
         Route::get('{id}/restore', [TagController::class, 'restore'])->name('restore');
         Route::delete('{id}/remove', [TagController::class, 'remove'])->name('remove');
+    });
+
+    // Tags
+    Route::resource('comments', CommentController::class)->except(['show', 'store', 'create', 'edit', 'update']);
+    Route::group(['prefix' => 'comments', 'as' => 'comments.'], function () {
+        Route::get('/deleted', [CommentController::class, 'deleted'])->name('deleted');
+        Route::get('{id}/restore', [CommentController::class, 'restore'])->name('restore');
+        Route::delete('{id}/remove', [CommentController::class, 'remove'])->name('remove');
     });
 });
 

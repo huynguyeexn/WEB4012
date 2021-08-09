@@ -6,6 +6,8 @@ use App\Http\Requests\RuleCreatePost;
 use App\Http\Requests\RuleUpdatePost;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
+use App\Models\TagsOfPost;
 use Brian2694\Toastr\Facades\Toastr;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -62,7 +64,7 @@ class PostController extends Controller
     {
         //
         try {
-            $formValue = $request->only(['title', 'desc', 'content', 'cat_id', 'hidden']);
+            $formValue = $request->only(['title', 'desc', 'content', 'cat_id', 'hidden', 'tags']);
 
             $post->title = $formValue['title'];
             $post->desc = $formValue['desc'];
@@ -84,6 +86,13 @@ class PostController extends Controller
             }
 
             $post->save();
+
+            $tags = $formValue['tags'];
+
+            foreach ($tags as $tag) {
+                $tagField = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
+                TagsOfPost::firstOrCreate(['post_id' => $post->id, 'tag_id' => $tagField->id]);
+            }
 
             Toastr::success('Thêm tin tức mới thành công.', 'Thành công!');
             return redirect()->route('admin.posts.index');
@@ -115,10 +124,11 @@ class PostController extends Controller
     {
         //
         $categories = Category::all();
+        $tagsOfPost = $post->tagsOfPost()->get();
         if ($post === null) {
             return 'Không tìm thấy tin tức này.';
         }
-        return view('pages.admin.posts.edit', ['post' => $post, 'categories' => $categories]);
+        return view('pages.admin.posts.edit', ['post' => $post, 'categories' => $categories, 'tagsOfPost' => $tagsOfPost]);
     }
 
     /**
@@ -132,7 +142,7 @@ class PostController extends Controller
     {
         //
         try {
-            $formValue = $request->only(['title', 'desc', 'content', 'cat_id', 'hidden', 'old_image']);
+            $formValue = $request->only(['title', 'desc', 'content', 'cat_id', 'hidden', 'old_image', 'tags']);
 
             $post->title = $formValue['title'];
             $post->desc = $formValue['desc'];
@@ -155,6 +165,16 @@ class PostController extends Controller
             // dd($post);
 
             $post->update();
+
+
+            $tags = $formValue['tags'] ?? null;
+            $post->tagsOfPost()->delete();
+            if ($tags) {
+                foreach ($tags as $tag) {
+                    $tagField = Tag::firstOrCreate(['name' => $tag, 'slug' => Str::slug($tag)]);
+                    TagsOfPost::firstOrCreate(['post_id' => $post->id, 'tag_id' => $tagField->id]);
+                }
+            }
 
             Toastr::success('Cập nhật tin tức thành công.', 'Thành công!');
             return redirect()->route('admin.posts.index');

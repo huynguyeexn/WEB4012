@@ -16,8 +16,15 @@ class TagOfPost extends Migration
         //
         Schema::create('tags_of_post', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('post_id')->constrained();
-            $table->foreignId('tag_id')->constrained();
+            $table->foreignId('post_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->foreignId('tag_id')
+                ->constrained()
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

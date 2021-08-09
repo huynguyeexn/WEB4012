@@ -59,6 +59,17 @@
                             </select>
                         </div>
                         <div class="form-group">
+                            <label for="">Thẻ</label>
+                            <select class="form-select" id="validationTags" name="tags[]" multiple data-allow-new="true">
+                                <option disabled hidden value="">Gõ tên thẻ và nhấn enter...</option>
+
+                                @foreach ($tagsOfPost as $row)
+                                    <option selected value="{{ $row->tag->name }}">{{ $row->tag->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group">
                             <div class="form-check">
                                 <div class="checkbox">
                                     <input type="checkbox" id="hidden" name="hidden" class="form-check-input">
@@ -161,5 +172,9 @@
                 }
             }
         });
+    </script>
+    <script type="module">
+        import Tags from "../../../assets/admin/vendors/bootstrap5-tags-master/tags.min.js";
+        Tags.init();
     </script>
 @endsection

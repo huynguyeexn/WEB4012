@@ -7,6 +7,8 @@ use App\Mail\SendContact;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
+use App\Models\TagsOfPost;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -88,12 +90,27 @@ class PageController extends Controller
     public function post(Request $request, Post $posts)
     {
         $post = $posts->where('slug', $request->slug)->first();
+        $tagList = array_map(function ($row) {
+            return $row["tag_id"];
+        }, $post->tagsOfPost()->get()->toArray());
+
+        $related = [];
+        foreach ($tagList as $tagId) {
+            array_push($related, ...Tag::find($tagId)->posts());
+        }
+        if (count(array_unique($related)) < 20) {
+            $relatedByCategory = Category::find($post->cat_id)->post->take(20);
+            array_push($related, ...$relatedByCategory);
+        }
+        $related =  array_slice(array_unique($related), 0, 20);
 
         ++$post->views;
+
         $post->update();
 
         $data = [
-            'post' => $post
+            'post' => $post,
+            'related' => $related
         ];
         return view('pages.site.post', $data);
     }
@@ -125,5 +142,22 @@ class PageController extends Controller
     public function register()
     {
         return view('pages.site.register');
+    }
+
+
+    public function tag(Request $request, Tag $tag, $slug)
+    {
+
+        $id = $tag->where('slug', $slug)->first()->id;
+
+        $posts = Tag::find($id)->tagsOfPost()->paginate(20);
+
+        $data =  [
+            'tag' => $tag->where('slug', $slug)->first(),
+            'posts' => $posts
+        ];
+
+
+        return view('pages.site.tag', $data);
     }
 }

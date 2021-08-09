@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('page-heading', 'Thùng rác thẻ tin tức')
+@section('page-heading', 'Thùng rác ý kiến tin tức')
 
 @section('page-content')
 <section class="row">
@@ -8,55 +8,47 @@
         <div class="card">
             <div class="p-4 card-body">
                 <div class="mb-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.tags.index') }}" type="button" class="me-2 btn btn-outline-secondary">
+                    <a href="{{ route('admin.comments.index') }}" type="button"
+                        class="me-2 btn btn-outline-secondary">
                         <i class='bx bx-arrow-back'></i>
                         Quay về
                     </a>
                 </div>
                 <table class="table p-2 table-striped" id="the" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th class="text-center">ID</th>
-                            <th class="text-center">Tên thẻ</th>
-                            <th class="text-center">Số bài viết</th>
-                            <th class="text-center">Cập nhật</th>
-                            <th class="text-center"></th>
-                        </tr>
-                    </thead>
                     <tbody>
                         @foreach ($data as $row)
                             <tr>
-                                <td class="text-center">#{{ $row->id }}</td>
-
-                                <td class="text-center">
-                                    <a href="{{ route('category', ['parent' => $row->slug]) }}">
-                                        <strong>
-                                            {{ $row->name }}
-                                            @if ($row->hidden === 1)
-                                                (<i class="fa fa-eye-slash" aria-hidden="true"></i> Đã ẩn)
-                                            @endif
-                                        </strong>
-                                    </a>
+                                <td>
+                                    <div class="avatar avatar-md">
+                                        <img src="{{ $row->user->avatar }}">
+                                    </div>
                                 </td>
-                                <td class="text-center">
-                                    {{ $row->countPost() }}
-                                </td>
-                                <td class="text-center">
-                                    <p class="p-0 m-0">{{ \Carbon\Carbon::parse($row->updated_at) }}</p>
-                                    <small>{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}</small>
+                                <td class="col-auto">
+                                    <p class="mb-0">
+                                        <span class="font-bold"> {{ $row->user->name }}</span>
+                                        <small>{{ \Carbon\Carbon::parse($row->updated_at)->diffForHumans() }}</small>
+                                    </p>
+                                    <figure class="mb-0 ">
+                                        <blockquote>
+                                            <p>{{ $row->content }}</p>
+                                        </blockquote>
+                                        <figcaption class="mb-0 blockquote-footer text-muted">
+                                            Bài viết: {{ $row->post->title }}
+                                        </figcaption>
+                                    </figure>
                                 </td>
 
                                 <td class="text-center">
                                     <div class="mb-3 btn-group" role="group" aria-label="Basic example">
                                         <div>
-                                            <a href="{{ route('admin.tags.restore', $row->id) }}" type="button"
+                                            <a href="{{ route('admin.comments.restore', $row->id) }}" type="button"
                                                 class="border-0 btn icon btn-outline-primary" data-bs-toggle="tooltip"
                                                 data-bs-placement="top" title="Khôi phục">
                                                 <i class='bx bx-archive-out'></i>
                                             </a>
                                         </div>
 
-                                        <form action="{{ route('admin.tags.remove', $row->id) }}" method="POST">
+                                        <form action="{{ route('admin.comments.remove', $row->id) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
@@ -73,7 +65,7 @@
                 </table>
             </div>
             <div class="card-footer d-flex justify-content-end ">
-                <a href="{{ route('admin.tags.index') }}" type="button" class="me-2 btn btn-outline-secondary">
+                <a href="{{ route('admin.comments.index') }}" type="button" class="me-2 btn btn-outline-secondary">
                     <i class='bx bx-arrow-back'></i>
                     Quay về
                 </a>

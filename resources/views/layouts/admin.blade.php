@@ -4,12 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Mazer Admin Dashboard</title>
+    <title>THE NEWS - Trang quản trị</title>
 
     <link rel="stylesheet" href="{{ mix('css/bootstrap.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/admin/vendors/iconly/bold.css') }}">
 
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
 
     <!-- Toastr -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">

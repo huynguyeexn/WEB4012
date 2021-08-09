@@ -66,14 +66,29 @@
                                                 <li>Hiện và đếm số lần xem tin <i
                                                         class="mx-2 icon icon-check text-success"></i></li>
                                                 <li>Hiện ý kiến và lưu ý kiến <i
-                                                        class="mx-2 icon icon-cross text-error"></i></li>
-                                                <li>Hiện tag <i class="mx-2 icon icon-check text-success"></i></li>
+                                                        class="mx-2 icon icon-check text-success"></i></li>
                                                 </li>
-                                                <li>Hiện tin liên quan <i class="mx-2 icon icon-cross text-error"></i>
+                                                <li>Hiện tin liên quan <i class="mx-2 icon icon-check text-success"></i>
                                                 </li>
-                                                <li>Hiện breadcrumb <i class="mx-2 icon icon-cross text-error"></i></li>
-                                                <li>Hiện ngày(d/m/Y) , số lần xem <i
-                                                        class="mx-2 icon icon-cross text-error"></i></li>
+                                                <li>Hiện breadcrumb <i class="mx-2 icon icon-check text-success"></i>
+                                                </li>
+                                                <li>Hiện ngày, số lần xem<i
+                                                        class="mx-2 icon icon-check text-success"></i></li>
+                                            </ol>
+                                        </div>
+                                        <div class="divider"></div>
+                                        {{-- Admin --}}
+                                        <div>
+                                            <span class="px-2 label label-primary">Tag</span>
+                                            <ol class="m-0">
+                                                <li>Quản lý Thẻ tag <i class="mx-2 icon icon-check text-success"></i>
+                                                <li>Thêm tag trong thêm tin tức <i
+                                                        class="mx-2 icon icon-check text-success"></i>
+                                                </li>
+                                                <li>Hiện tag trong tin chi tiết <i
+                                                        class="mx-2 icon icon-check text-success"></i></li>
+                                                <li>Xem danh sách tin tức chứa Thẻ Tag <i
+                                                        class="mx-2 icon icon-check text-success"></i></li>
                                             </ol>
                                         </div>
                                         <div class="divider"></div>
@@ -81,9 +96,9 @@
                                         <div>
                                             <span class="px-2 label label-primary">Admin</span>
                                             <ol class="m-0">
-                                                <li>Quản lý Tag <i class="mx-2 icon icon-cross text-error"></i></li>
                                                 <li>Quản lý User <i class="mx-2 icon icon-cross text-error"></i></li>
-                                                <li>Quản lý Comment <i class="mx-2 icon icon-cross text-error"></i></li>
+                                                <li>Quản lý Comment <i class="mx-2 icon icon-check text-success"></i>
+                                                </li>
                                             </ol>
                                         </div>
                                         <div class="divider"></div>
@@ -188,9 +203,6 @@
                                                 </li>
                                                 <li>Thống kê tin xem nhiều
                                                     <i class="mx-2 icon icon-check text-success"></i>
-                                                </li>
-                                                <li>Thống kê số người dùng truy cập
-                                                    <i class="mx-2 icon icon-cross text-error"></i>
                                                 </li>
                                             </ol>
                                         </div>
