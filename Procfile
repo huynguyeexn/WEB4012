@@ -1,1 +1,1 @@
-web: vendor/bin/the-news-php3 public/ > Procfile
+web: vendor/bin/heroku-php-apache2 public/
