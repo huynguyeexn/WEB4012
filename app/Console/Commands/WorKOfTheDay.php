@@ -38,9 +38,9 @@ class WorkOfTheDay extends Command
      */
     public function handle()
     {
-        Category::all()->each(
+        Category::whereNull('parent_id')->each(
             function ($cat) {
-                print(PHP_EOL."[$cat->id] ");
+                print(PHP_EOL . "[$cat->id] ");
 
                 $bot = new \App\Scraper\ThanhNienPost($cat->id);
                 $bot->scrape();
