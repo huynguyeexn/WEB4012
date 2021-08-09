@@ -20,6 +20,8 @@ class ThanhNienCategory
 
         $crawler->filter('.rss-list > ul > li')->each(
             function (Crawler $node) use (&$result) {
+                $index = 0;
+
                 $category = new Category();
                 $category->name = $node->children()->filter('a')->first()->text();
                 $slug = Str::of($category->name)->slug('-');
@@ -34,12 +36,13 @@ class ThanhNienCategory
 
                 if ($node->children()->count() > 1) {
                     $node->children()->filter('ul li a')->each(
-                        function ($child) use ($id, $slug) {
+                        function ($child) use ($id, $slug, $index) {
                             $category = new Category();
                             $category->name = $child->text();
-                            $category->slug = $slug."/".Str::of($category->name)->slug('-');
+                            $category->slug = $slug . "/" . Str::of($category->name)->slug('-');
                             $category->rss_link = $child->attr('href');
                             $category->parent_id = $id;
+                            $category->order = ++$index;
                             $category->save();
                         }
                     );

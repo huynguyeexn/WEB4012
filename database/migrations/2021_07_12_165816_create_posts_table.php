@@ -27,7 +27,9 @@ class CreatePostsTable extends Migration
             $table->boolean('hidden')->default(false);
             $table->timestamp('date')->nullable();
             $table->unsignedBigInteger('cat_id')->nullable();
-            $table->foreign('cat_id')->references('id')->on('categories');
+            $table->foreign('cat_id')->references('id')->on('categories')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
