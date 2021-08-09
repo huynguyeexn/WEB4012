@@ -7,6 +7,7 @@ use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\Date;
 
 class CommentController extends Controller
 {
@@ -37,6 +38,7 @@ class CommentController extends Controller
         $comments->post_id = $post->id;
         $comments->user_id = Auth::user()->id;
         $comments->content = $request->content;
+        $comments->date = Date::now();
 
         $comments->save();
 
