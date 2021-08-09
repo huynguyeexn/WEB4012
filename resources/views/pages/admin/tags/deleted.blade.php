@@ -145,7 +145,7 @@ src="https://cdn.datatables.net/v/bs5/dt-1.10.25/r-2.2.9/sb-1.1.0/sp-1.3.0/datat
             orderCellsTop: true,
             fixedHeader: true,
             language: {
-                url: 'http://cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json'
+                url: 'https://cdn.datatables.net/plug-ins/1.10.25/i18n/Vietnamese.json'
             },
             "order": [
                 [4, "desc"]

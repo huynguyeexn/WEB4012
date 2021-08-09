@@ -30,7 +30,7 @@
 
 
     <!-- Toastr -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
 
@@ -99,7 +99,7 @@ integrity="sha512-LvYVj/X6QpABcaqJBqgfOkSjuXv81bLz+rpz0BQoEbamtLkUF2xhPNwtI/xrok
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 
 {!! Toastr::message() !!}
 

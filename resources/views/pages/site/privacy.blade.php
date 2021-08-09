@@ -5,7 +5,8 @@
 <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and
     use of information in accordance with this Privacy Policy. This Privacy Policy has been created with the help of the
     <a href="https://www.freeprivacypolicy.com/free-privacy-policy-generator/" target="_blank">Privacy Policy
-        Generator</a>.</p>
+        Generator</a>.
+</p>
 <h1>Interpretation and Definitions</h1>
 <h2>Interpretation</h2>
 <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The
@@ -50,8 +51,8 @@
             Service or from the Service infrastructure itself (for example, the duration of a page visit).</p>
     </li>
     <li>
-        <p><strong>Website</strong> refers to THE NEWS, accessible from <a href="http://127.0.0.1:8888/"
-                rel="external nofollow noopener" target="_blank">http://127.0.0.1:8888/</a></p>
+        <p><strong>Website</strong> refers to THE NEWS, accessible from <a href="https://127.0.0.1:8888/"
+                rel="external nofollow noopener" target="_blank">https://127.0.0.1:8888/</a></p>
     </li>
     <li>
         <p><strong>You</strong> means the individual accessing or using the Service, or the company, or other legal
@@ -263,6 +264,6 @@
 <h1>Contact Us</h1>
 <p>If you have any questions about this Privacy Policy, You can contact us:</p>
 <ul>
-    <li>By visiting this page on our website: <a href="http://127.0.0.1:8888/lien-he" rel="external nofollow noopener"
-            target="_blank">http://127.0.0.1:8888/lien-he</a></li>
+    <li>By visiting this page on our website: <a href="https://127.0.0.1:8888/lien-he" rel="external nofollow noopener"
+            target="_blank">https://127.0.0.1:8888/lien-he</a></li>
 </ul>

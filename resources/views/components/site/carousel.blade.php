@@ -11,7 +11,7 @@
         @endphp
         @foreach ($list as $item)
             <div class="carousel-item {{ $index++ === 0 ? 'active' : '' }}">
-                <img onerror="this.src=`http://placehold.jp/99ccff/003366/{{ $imageSize }}.png?text={{ $item->title }}`"
+                <img onerror="this.src=`https://placehold.jp/99ccff/003366/{{ $imageSize }}.png?text={{ $item->title }}`"
                     src="{{ resizeImage($item->thumb, $imageSize) }}" class="d-block w-100" alt="{{ $item->slug }}">
                 <div class="carousel-caption d-none d-md-block">
                     <h4>
