@@ -26,7 +26,7 @@
                                 alt="{{ $row->title }}"
                                 style="width: 100%; min-height: 200px; background-color: #ddd">
                             <div class="card-body">
-                                <a href="{{ route('post', $row->slug || null) }}">
+                                <a href="{{ route('post', $row->slug ?: '') }}">
                                     <h5 class="card-title">{{ $row->title }}</h5>
                                 </a>
                                 <p class="card-text">

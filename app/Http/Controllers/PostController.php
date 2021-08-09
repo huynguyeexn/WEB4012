@@ -149,7 +149,7 @@ class PostController extends Controller
             $post->content = $formValue['content'];
             $post->cat_id = $formValue['cat_id'];
             $post->hidden = isset($formValue['hidden']) ?  1 : 0;
-            $post->slug = Str::of($formValue['title'])->slug('-') . "-" . $post->id;
+            $post->slug = Str::slug($formValue['title']) . "-" . $post->id;
 
             if (!isset($formValue['old_image'])) {
                 if ($request->file('thumb')) {
@@ -162,8 +162,7 @@ class PostController extends Controller
                 }
             }
 
-            // dd($post);
-
+            // dd($post)
             $post->update();
 
 

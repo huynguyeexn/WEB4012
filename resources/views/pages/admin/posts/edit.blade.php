@@ -29,8 +29,7 @@
 
                         <div class="form-group">
                             <label for="content">Nội dung</label>
-                            <textarea name="content" id="content" cols="30" rows="20"
-                                required>{{ $post->content }}</textarea>
+                            <textarea name="content" id="content" cols="30" rows="20">{{ $post->content }}</textarea>
                         </div>
                     </div>
                 </div>
