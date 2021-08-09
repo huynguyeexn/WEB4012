@@ -44,7 +44,7 @@
                             </a>
                             <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 
-                                @if (Auth::user()->is_admin === 1 || Auth::user()->is_root === 1)
+                                @if (Auth::user()->is_admin || Auth::user()->is_root)
                                     <!-- item-->
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item notify-item">
                                         <i class='mr-2 bx bx-customize'></i> Trang quản trị
@@ -90,12 +90,13 @@
             <div id="navigation">
                 <!-- Navigation Menu-->
                 <ul class="navigation-menu">
-                    <li class="has-submenu">
+                    <li class="has-submenu  {{ request()->is('trang-chu') ? 'active' : '' }}">
                         <a href="{{ route('home') }}"><span>Trang chủ</span> </a>
                     </li>
                     @foreach ($menuList as $menu)
                         @if (count($menu->children) > 0)
-                            <li class="has-submenu">
+                            <li
+                                class="has-submenu  {{ request()->is('chuyen-muc/' . $menu->slug . '*') ? 'active' : '' }}">
                                 <a href="{{ route('category', $menu->slug) }}"><span> {{ $menu->name }} </span> <i
                                         class='bx bx-caret-down'></i> </a>
                                 <ul class="submenu megamenu">

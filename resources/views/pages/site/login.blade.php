@@ -40,40 +40,16 @@
                                 </a>
                             </div>
                             {{-- FACEBOOK --}}
-                            <div class="col-6 mt-2">
+                            {{-- <div class="col-6 mt-2">
                                 <button type="button" class="btn btn-block facebook">
                                     <h3 class="m-0"><i class="fab fa-facebook-f" aria-hidden="true"></i></h3>
                                 </button>
-                            </div>
+                            </div> --}}
                             {{-- GITHUB --}}
                             <div class="col-6 mt-2">
                                 <a href="{{ route('login.github') }}" type="button" class="github btn btn-block">
                                     <h3 class="m-0"><i class="fab fa-github" aria-hidden="true"></i></h3>
                                 </a>
-                            </div>
-                            {{-- TWITTER --}}
-                            <div class="col-6 mt-2">
-                                <button type="button" class="twitter btn btn-block">
-                                    <h3 class="m-0"><i class="fab fa-twitter" aria-hidden="true"></i></h3>
-                                </button>
-                            </div>
-                            {{-- TWITCH --}}
-                            <div class="col-6 mt-2">
-                                <button type="button" class="twitch btn btn-block">
-                                    <h3 class="m-0"><i class="fab fa-twitch" aria-hidden="true"></i></h3>
-                                </button>
-                            </div>
-                            {{-- DISCORD --}}
-                            <div class="col-6 mt-2">
-                                <button type="button" class="discord btn btn-block">
-                                    <h3 class="m-0"><i class="fab fa-discord"></i></h3>
-                                </button>
-                            </div>
-                            {{-- Tiktok --}}
-                            <div class="col-6 mt-2">
-                                <button type="button" class="tiktok btn btn-block">
-                                    <h3 class="m-0"><i class="fab fa-tiktok"></i></h3>
-                                </button>
                             </div>
                         </div>
                     </div>
