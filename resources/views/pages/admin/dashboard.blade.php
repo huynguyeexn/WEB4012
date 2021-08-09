@@ -103,7 +103,8 @@
                                                         <img src="{{ url('resizes/400x200/' . $row->thumb) }}"
                                                             onerror="this.src=`https://placehold.jp/99ccff/003366/{{ '400x200' }}.png?text={{ $row->title }}`">
                                                     </div>
-                                                    <p class="ms-3 mb-0 font-bold">{{ $row->title }}</p>
+                                                    <a href="{{ route('post', $row->slug ?: '') }}"
+                                                        class="ms-3 mb-0 font-bold">{{ $row->title }}</a>
                                                 </div>
                                             </td>
                                             <td class="col-2">

@@ -9,8 +9,8 @@
                     <span class="logo-large">THE NEWS</span>
                 </a>
                 <span class="mx-2 d-none d-lg-block">|</span>
-                <strong class="text-uppercase"
-                    id="clock">{{ \Carbon\Carbon::now()->translatedFormat('l, d/m/Y') }}</strong>
+                <p class="mb-0 text-uppercase" id="clock">{{ \Carbon\Carbon::now()->translatedFormat('l, d/m/Y') }}
+                </p>
             </div>
             <!-- End Logo container-->
 
