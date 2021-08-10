@@ -22,11 +22,11 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
 
-            Toastr::success('','Đăng nhập thành công!');
+            Toastr::success('', 'Đăng nhập thành công!');
             return redirect()->route('home');
         }
 
-        Toastr::error('Hãy kiểm tra lại thông tin đăng nhập của bạn','Không thể đăng nhập!');
+        Toastr::error('Hãy kiểm tra lại thông tin đăng nhập của bạn', 'Không thể đăng nhập!');
         return redirect()->route('home');
     }
 
@@ -42,33 +42,18 @@ class AuthController extends Controller
         try {
             $user->save();
 
-            Toastr::success('bạn đã có thể đăng nhập.','Đăng ký thành công!');
+            Toastr::success('bạn đã có thể đăng nhập.', 'Đăng ký thành công!');
 
             return redirect()->route('login');
         } catch (\Throwable $th) {
             dd($th);
         }
-
-        // $credentials = $request->validate([
-        //     'email' => ['required', 'email'],
-        //     'password' => ['required'],
-        // ]);
-
-        // if (Auth::attempt($credentials)) {
-        //     $request->session()->regenerate();
-
-        //     Toastr::success('','Đăng nhập thành công!');
-        // }
-
-        // Toastr::error('Hãy kiểm tra lại thông tin đăng nhập của bạn','Không thể đăng nhập!');
-
-        // return redirect()->route('home');
     }
 
     public function logout()
     {
         Auth::logout();
-        Toastr::success('Đăng xuất thành công','Thành công!');
+        Toastr::success('Đăng xuất thành công', 'Thành công!');
         return redirect()->route('home');
     }
 }

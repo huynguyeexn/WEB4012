@@ -5,10 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RuleCreateCategory;
 use App\Http\Requests\RuleUpdateCategory;
 use App\Models\Category;
-use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
-use Exception;
-use Illuminate\Support\Facades\Cache;
 
 class CategoryController extends Controller
 {

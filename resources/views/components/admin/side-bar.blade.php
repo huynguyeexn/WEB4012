@@ -42,6 +42,12 @@
                         <span>Ý kiến</span>
                     </a>
                 </li>
+                <li class="sidebar-item {{ request()->is('admin/users*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
+                        <i class='bx bx-user'></i>
+                        <span>Tài khoản</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <button class="sidebar-toggler btn x"><i data-feather="x"></i></button>

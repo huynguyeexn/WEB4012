@@ -9,6 +9,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -125,12 +126,20 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin', '
         Route::delete('{id}/remove', [TagController::class, 'remove'])->name('remove');
     });
 
-    // Tags
+    // Comments
     Route::resource('comments', CommentController::class)->except(['show', 'store', 'create', 'edit', 'update']);
     Route::group(['prefix' => 'comments', 'as' => 'comments.'], function () {
         Route::get('/deleted', [CommentController::class, 'deleted'])->name('deleted');
         Route::get('{id}/restore', [CommentController::class, 'restore'])->name('restore');
         Route::delete('{id}/remove', [CommentController::class, 'remove'])->name('remove');
+    });
+
+    // Tags
+    Route::resource('users', UserController::class)->except(['show']);
+    Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
+        Route::get('/deleted', [UserController::class, 'deleted'])->name('deleted');
+        Route::get('{id}/restore', [UserController::class, 'restore'])->name('restore');
+        Route::delete('{id}/remove', [UserController::class, 'remove'])->name('remove');
     });
 });
 

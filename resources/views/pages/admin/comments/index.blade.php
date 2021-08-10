@@ -38,8 +38,13 @@
                                             <p>{{ $row->content }}</p>
                                         </blockquote>
                                         <figcaption class="mb-0 blockquote-footer text-muted">
-                                            Bài viết: <a
-                                                href="{{ route('post', $row->post->slug) }}">{{ $row->post->title }}</a>
+                                            Bài viết:
+                                            @if ($row->post->trashed())
+                                                <span>Đã bị xóa</span>
+                                            @else
+                                                <a
+                                                    href="{{ route('post', $row->post->slug) }}">{{ $row->post->title }}</a>
+                                            @endif
                                         </figcaption>
                                     </figure>
                                 </td>

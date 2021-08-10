@@ -162,9 +162,7 @@ class PostController extends Controller
                 }
             }
 
-            // dd($post)
             $post->update();
-
 
             $tags = $formValue['tags'] ?? null;
             $post->tagsOfPost()->delete();

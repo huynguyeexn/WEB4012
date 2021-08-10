@@ -91,10 +91,10 @@
                     Thùng rác
                 </button> --}}
 
-                <button type="button" class="btn btn-primary">
+                <a href="{{ route('admin.categories.create') }}" type="button" class="btn btn-primary">
                     <i class='bx bx-plus'></i>
                     Thêm danh mục mới
-                </button>
+                </a>
 
             </div>
         </div>
