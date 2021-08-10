@@ -135,11 +135,13 @@ class CategoryController extends Controller
         //
         try {
             $category = Category::find($id);
-            foreach ($category->children as $child) {
-                $child->delete();
-            }
+            if (count($category->children) > 0 && $category->countPost() > 0) {
+                Toastr::success('Đang có tin tức hoặc danh mục khác thuộc danh mục này (Hãy xóa danh mục con và bài viét trước)', 'Không thể xóa!');
+                return redirect()->route('admin.categories.index');
+            };
             $category->delete();
-            Toastr::success('Danh mục đã được chuyển vào thùng rác.', 'Thành công!');
+            // Toastr::success('Danh mục đã được chuyển vào thùng rác.', 'Thành công!');
+            Toastr::success('Đã xóa danh mục.', 'Thành công!');
             return redirect()->route('admin.categories.index');
         } catch (\Throwable $th) {
             //throw $th;
@@ -148,50 +150,50 @@ class CategoryController extends Controller
         }
     }
 
-    public function deleted()
-    {
-        //
-        $all =  Category::onlyTrashed()->get();
-        return view('pages.admin.categories.deleted', ['data' => $all]);
-    }
+    // public function deleted()
+    // {
+    //     //
+    //     $all =  Category::onlyTrashed()->get();
+    //     return view('pages.admin.categories.deleted', ['data' => $all]);
+    // }
 
 
-    public function restore($id)
-    {
-        //
-        try {
-            $category = Category::withTrashed()->find($id);
+    // public function restore($id)
+    // {
+    //     //
+    //     try {
+    //         $category = Category::withTrashed()->find($id);
 
-            foreach ($category->children as $child) {
-                $child->restore();
-            }
+    //         foreach ($category->children as $child) {
+    //             $child->restore();
+    //         }
 
-            $category->restore();
+    //         $category->restore();
 
-            Toastr::success('Danh mục đã được khôi phục.', 'Thành công!');
-            return redirect()->route('admin.categories.deleted');
-        } catch (\Throwable $th) {
-            throw $th;
-            Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
-            return redirect()->route('admin.categories.deleted');
-        }
-    }
+    //         Toastr::success('Danh mục đã được khôi phục.', 'Thành công!');
+    //         return redirect()->route('admin.categories.deleted');
+    //     } catch (\Throwable $th) {
+    //         throw $th;
+    //         Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
+    //         return redirect()->route('admin.categories.deleted');
+    //     }
+    // }
 
 
-    public function remove($id)
-    {
-        //
-        try {
-            Category::withTrashed()
-                ->where('id', $id)
-                ->forceDelete();
+    // public function remove($id)
+    // {
+    //     //
+    //     try {
+    //         Category::withTrashed()
+    //             ->where('id', $id)
+    //             ->forceDelete();
 
-            Toastr::success('Danh mục đã bị xóa.', 'Thành công!');
-            return redirect()->route('admin.categories.deleted');
-        } catch (\Throwable $th) {
-            //throw $th;
-            Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
-            return redirect()->route('admin.categories.deleted');
-        }
-    }
+    //         Toastr::success('Danh mục đã bị xóa.', 'Thành công!');
+    //         return redirect()->route('admin.categories.deleted');
+    //     } catch (\Throwable $th) {
+    //         //throw $th;
+    //         Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
+    //         return redirect()->route('admin.categories.deleted');
+    //     }
+    // }
 }

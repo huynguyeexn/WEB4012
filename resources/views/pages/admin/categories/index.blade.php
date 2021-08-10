@@ -8,11 +8,11 @@
         <div class="card">
             <div class="p-4 card-body">
                 <div class="mb-3 d-flex justify-content-end">
-                    <a href="{{ route('admin.categories.deleted') }}" type="button"
+                    {{-- <a href="{{ route('admin.categories.deleted') }}" type="button"
                         class="me-2 btn btn-outline-secondary">
                         <i class='bx bx-trash-alt'></i>
                         Thùng rác
-                    </a>
+                    </a> --}}
                     <a href="{{ route('admin.categories.create') }}" type="button" class="btn btn-primary">
                         <i class='bx bx-plus'></i>
                         Thêm danh mục mới
@@ -71,7 +71,7 @@
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit"
-                                                class="border-0 btn icon btn-outline-danger btn-delete"
+                                                class="border-0 btn icon btn-outline-danger {{ count($row->children) == 0 && $row->countPost() == 0 ? 'btn-delete' : 'btn-cannot-delete' }}"
                                                 data-bs-toggle="tooltip" data-bs-placement="top"
                                                 title="Cho vào thùng rác">
                                                 <i class='bx bx-trash-alt'></i>
@@ -86,10 +86,10 @@
             </div>
             <div class="card-footer d-flex justify-content-end ">
 
-                <button type="button" class="me-2 btn btn-outline-secondary">
+                {{-- <button type="button" class="me-2 btn btn-outline-secondary">
                     <i class='bx bx-trash-alt'></i>
                     Thùng rác
-                </button>
+                </button> --}}
 
                 <button type="button" class="btn btn-primary">
                     <i class='bx bx-plus'></i>
@@ -127,7 +127,7 @@ src="https://cdn.datatables.net/v/bs5/dt-1.10.25/r-2.2.9/sb-1.1.0/sp-1.3.0/datat
 
             return Swal.fire({
                 title: 'Bạn chắc chứ?',
-                text: "Các danh mục con và các bài viết cũng sẽ bị đưa vào thùng rác!",
+                text: "Thao tác này sẽ không thể hoàn tác!",
                 icon: 'warning',
                 showCancelButton: true,
                 cancelButtonColor: '#d33',
@@ -139,7 +139,19 @@ src="https://cdn.datatables.net/v/bs5/dt-1.10.25/r-2.2.9/sb-1.1.0/sp-1.3.0/datat
                     return $(this).parent().submit();
                 }
             })
-        })
+        });
+
+        $('.btn-cannot-delete').on('click', function(e) {
+            e.preventDefault();
+
+            return Swal.fire({
+                title: 'Không thể xóa!',
+                text: "Đang có tin tức hoặc danh mục khác thuộc danh mục này (Hãy xóa danh mục con và bài viét trước)!",
+                icon: 'error',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Được rồi!',
+            })
+        });
 
         // Setup - add a text input to each footer cell
         $('#danhmuc thead tr').clone(true).appendTo('#danhmuc thead');

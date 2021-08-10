@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Cache;
 class Category extends Model
 {
     use HasFactory;
-    use SoftDeletes;
+    // use SoftDeletes;
 
     public function cacheKey()
     {
@@ -24,11 +24,13 @@ class Category extends Model
 
     public function children()
     {
-        return $this->hasMany(self::class, 'parent_id', 'id')->withTrashed();
+        // return $this->hasMany(self::class, 'parent_id', 'id')->withTrashed();
+        return $this->hasMany(self::class, 'parent_id', 'id');
     }
     public function parent()
     {
-        return $this->belongsTo(self::class, 'parent_id')->withTrashed();
+        // return $this->belongsTo(self::class, 'parent_id')->withTrashed();
+        return $this->belongsTo(self::class, 'parent_id');
     }
 
 
@@ -74,8 +76,6 @@ class Category extends Model
 
     public function countPost()
     {
-        return Cache::rememberForever($this->cacheKey() . ':categories.posts_count', function () {
-            return $this->post()->count();
-        });
+        return $this->post()->count();
     }
 }

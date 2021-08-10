@@ -102,11 +102,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['admin', '
 
     // Categories
     Route::resource('categories', CategoryController::class)->except(['show']);
-    Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
-        Route::get('/deleted', [CategoryController::class, 'deleted'])->name('deleted');
-        Route::get('{id}/restore', [CategoryController::class, 'restore'])->name('restore');
-        Route::delete('{id}/remove', [CategoryController::class, 'remove'])->name('remove');
-    });
+    // Route::group(['prefix' => 'categories', 'as' => 'categories.'], function () {
+    //     Route::get('/deleted', [CategoryController::class, 'deleted'])->name('deleted');
+    //     Route::get('{id}/restore', [CategoryController::class, 'restore'])->name('restore');
+    //     Route::delete('{id}/remove', [CategoryController::class, 'remove'])->name('remove');
+    // });
 
     //Posts
     Route::resource('posts', PostController::class)->except(['show']);
