@@ -17,21 +17,10 @@
             {{ $post->category->name }}
         </span>
     </a>
-    <p class="my-2 text-muted">
-        Đăng ngày: {{ \Carbon\Carbon::create($post->date)->format('d-m-Y H:i:s') }}
-        |
-        <i class="mr-1 fa fa-eye" aria-hidden="true"></i> {{ $post->views }}
-    </p>
-    <p>
-        <button class="btn btn-danger waves-effect"> <i class="fa fa-heart m-r-5"></i>
-            <span> {{ $post->like }}</span> </button>
-    </p>
-    <h1>
-        {{ $post->title }}
-    </h1>
+
     <div class="row">
-        <div class="col-12">
-            <div class="">
+        <div class="col-12 p-0 mt-2">
+            <div style="margin-right: -10px;">
                 <div id="fb-root"></div>
                 <script crossorigin="anonymous"
                                 src="https://connect.facebook.net/vi_VI/sdk.js#xfbml=1&version=v11.0&appId=514561729797082&autoLogAppEvents=1"
@@ -43,6 +32,18 @@
 
         </div>
     </div>
+    <p class="my-2 text-muted">
+        Đăng ngày: {{ \Carbon\Carbon::create($post->date)->format('d-m-Y H:i:s') }}
+        |
+        <i class="mr-1 fa fa-eye" aria-hidden="true"></i> {{ $post->views }}
+    </p>
+    {{-- <p>
+        <button class="btn btn-danger waves-effect"> <i class="fa fa-heart m-r-5"></i>
+            <span> {{ $post->like }}</span> </button>
+    </p> --}}
+    <h1>
+        {{ $post->title }}
+    </h1>
     <div class="row">
         <div class="col-12">
             <h2 class="h4">
