@@ -38,7 +38,7 @@
                     @auth
                         <li class="dropdown notification-list">
                             <a class="nav-link dropdown-toggle waves-effect waves-light nav-user" data-toggle="dropdown"
-                                href="#" role="button" aria-haspopup="false" aria-expanded="false">
+                                role="button" aria-haspopup="false" aria-expanded="false">
                                 <img onerror="this.src='{{ asset('assets/images/unknown-person-icon.jpg') }}'"
                                     src="{{ Auth::user()->avatar }}" alt="user" class="rounded-circle">
                             </a>

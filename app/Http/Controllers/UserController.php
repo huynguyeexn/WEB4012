@@ -3,10 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RegsiterForm;
-use App\Http\Requests\RuleCreateUser;
+use App\Http\Requests\RuleUpdateUser;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -80,6 +79,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         //
+        return view('pages.admin.users.edit', ['user' => $user]);
     }
 
     /**
@@ -89,9 +89,27 @@ class UserController extends Controller
      * @param  \App\Models\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $user)
+    public function update(RuleUpdateUser $request, User $user)
     {
         //
+        try {
+            $input = $request->only(['name', 'email', 'new_password', 'is_admin']);
+
+            $user->name = $input['name'];
+            $user->email = $input['email'];
+            if ($input['new_password']) {
+                $user->password = bcrypt($input['new_password']);
+            }
+            $user->is_admin = isset($input['is_admin']) ? 1 : 0;
+
+            $user->update();
+
+            Toastr::success('Sửa tài khoản thành công.', 'Thành công!');
+            return redirect()->route('admin.users.index');
+        } catch (\Throwable $th) {
+            Toastr::error('Đã có lỗi xảy ra trong quá trình lưu.', 'Lỗi!');
+            return redirect()->route('admin.users.index');
+        }
     }
 
     /**
@@ -103,11 +121,15 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         try {
+            if ($user->is_root) {
+                Toastr::error('Không thể xóa tài khoản này.', 'Không có quyền!');
+                return redirect()->route('admin.users.index');
+            }
             $user->delete();
             Toastr::success('Đã xóa tài khoản.', 'Thành công!');
             return redirect()->route('admin.users.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.users.index');
         }
@@ -133,7 +155,6 @@ class UserController extends Controller
             Toastr::success('Tài khoản đã được khôi phục.', 'Thành công!');
             return redirect()->route('admin.users.deleted');
         } catch (\Throwable $th) {
-            throw $th;
             Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
             return redirect()->route('admin.users.deleted');
         }
@@ -151,7 +172,7 @@ class UserController extends Controller
             Toastr::success('Tài khoản đã bị xóa.', 'Thành công!');
             return redirect()->route('admin.users.deleted');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.users.deleted');
         }

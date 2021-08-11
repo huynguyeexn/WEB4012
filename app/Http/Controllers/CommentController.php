@@ -72,7 +72,7 @@ class CommentController extends Controller
             Toastr::success('Ý kiến đã được chuyển vào thùng rác.', 'Thành công!');
             return redirect()->route('admin.comments.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.comments.index');
         }
@@ -95,7 +95,7 @@ class CommentController extends Controller
             Toastr::success('Ý kiến đã được khôi phục.', 'Thành công!');
             return redirect()->route('admin.comments.deleted');
         } catch (\Throwable $th) {
-            throw $th;
+
             Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
             return redirect()->route('admin.comments.deleted');
         }
@@ -113,7 +113,7 @@ class CommentController extends Controller
             Toastr::success('Ý kiến đã bị xóa.', 'Thành công!');
             return redirect()->route('admin.comments.deleted');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.comments.deleted');
         }

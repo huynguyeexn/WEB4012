@@ -43,6 +43,9 @@
                                         <img src="{{ asset($row->avatar) }}">
                                         <div class="text-start ms-2">
                                             <span class="font-bold"> {{ $row->name }}</span>
+                                            @if ($row->is_admin)
+                                                <span class="badge bg-primary">Admin</span>
+                                            @endif
                                             <p class="mb-0">
                                                 {{ $row->email }}
                                             </p>

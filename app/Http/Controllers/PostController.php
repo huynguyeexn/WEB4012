@@ -97,7 +97,7 @@ class PostController extends Controller
             Toastr::success('Thêm tin tức mới thành công.', 'Thành công!');
             return redirect()->route('admin.posts.index');
         } catch (\Throwable $th) {
-            throw $th;
+
             Toastr::error('Đã có lỗi xảy ra trong quá trình thêm mới.', 'Lỗi!');
             return redirect()->route('admin.posts.index');
         }
@@ -176,7 +176,7 @@ class PostController extends Controller
             Toastr::success('Cập nhật tin tức thành công.', 'Thành công!');
             return redirect()->route('admin.posts.index');
         } catch (\Throwable $th) {
-            throw $th;
+
             Toastr::error('Đã có lỗi xảy ra trong quá trình cập nhật.', 'Lỗi!');
             return redirect()->route('admin.posts.index');
         }
@@ -196,7 +196,7 @@ class PostController extends Controller
             Toastr::success('Tin tức đã được chuyển vào thùng rác.', 'Thành công!');
             return redirect()->route('admin.posts.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.posts.index');
         }
@@ -227,7 +227,7 @@ class PostController extends Controller
             Toastr::success('Tin tức đã được khôi phục.', 'Thành công!');
             return redirect()->route('admin.posts.deleted');
         } catch (\Throwable $th) {
-            throw $th;
+
             Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
             return redirect()->route('admin.posts.deleted');
         }
@@ -245,7 +245,7 @@ class PostController extends Controller
             Toastr::success('Tin tức đã bị xóa.', 'Thành công!');
             return redirect()->route('admin.posts.deleted');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.posts.deleted');
         }

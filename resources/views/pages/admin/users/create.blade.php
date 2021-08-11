@@ -66,8 +66,7 @@
                                             <div class="checkbox">
                                                 <input type="checkbox" id="is_admin" name="is_admin"
                                                     class="form-check-input" @if (old('is_admin') === 'on') checked @endif>
-                                                <label for="is_admin">Tài khoản Admin? <i class="fa fa-eye-slash"
-                                                        aria-hidden="true"></i></label>
+                                                <label for="is_admin">Tài khoản Admin?</label>
                                             </div>
                                             @error('is_admin')
                                                 <small class="text-danger">{{ $message }}</small>

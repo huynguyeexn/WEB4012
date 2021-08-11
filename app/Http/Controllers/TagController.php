@@ -123,7 +123,7 @@ class TagController extends Controller
             Toastr::success('Thẻ đã được chuyển vào thùng rác.', 'Thành công!');
             return redirect()->route('admin.tags.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.tags.index');
         }
@@ -148,7 +148,7 @@ class TagController extends Controller
             Toastr::success('Thẻ đã được khôi phục.', 'Thành công!');
             return redirect()->route('admin.tags.deleted');
         } catch (\Throwable $th) {
-            throw $th;
+
             Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
             return redirect()->route('admin.tags.deleted');
         }
@@ -166,7 +166,7 @@ class TagController extends Controller
             Toastr::success('Thẻ đã bị xóa.', 'Thành công!');
             return redirect()->route('admin.tags.deleted');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.tags.deleted');
         }

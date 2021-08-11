@@ -141,7 +141,7 @@ class CategoryController extends Controller
             Toastr::success('Đã xóa danh mục.', 'Thành công!');
             return redirect()->route('admin.categories.index');
         } catch (\Throwable $th) {
-            //throw $th;
+            //
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.categories.index');
         }
@@ -170,7 +170,7 @@ class CategoryController extends Controller
     //         Toastr::success('Danh mục đã được khôi phục.', 'Thành công!');
     //         return redirect()->route('admin.categories.deleted');
     //     } catch (\Throwable $th) {
-    //         throw $th;
+    //
     //         Toastr::error('Đã có lỗi xảy ra trong quá trình khôi phục.', 'Lỗi!');
     //         return redirect()->route('admin.categories.deleted');
     //     }
@@ -188,7 +188,7 @@ class CategoryController extends Controller
     //         Toastr::success('Danh mục đã bị xóa.', 'Thành công!');
     //         return redirect()->route('admin.categories.deleted');
     //     } catch (\Throwable $th) {
-    //         //throw $th;
+    //         //
     //         Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
     //         return redirect()->route('admin.categories.deleted');
     //     }
