@@ -6,16 +6,29 @@
 
     <meta charset="utf-8" />
 
-    @hasSection('page-title')
-        <title>@yield('page-title') | THE NEWS - Made by HUi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:url" content="{{ url()->full() }}" />
+    <meta property="og:type" content="website" />
+    @hasSection('title')
+        <meta property="og:title" content="@yield('title')">
+        <title>@yield('title') | THE NEWS - Made by HUi</title>
     @else
-        <title>THE NEWS - Made by HUi</title>
+        @hasSection('page-title')
+            <title>@yield('page-title') | THE NEWS - Made by HUi</title>
+        @else
+            <title>THE NEWS - Made by HUi</title>
+        @endif
     @endif
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
-    <meta content="Coderthemes" name="author" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    @hasSection('thumb')
+        <meta property="og:image" content="{{ url('resizes/200x200') }}/@yield('thumb')">
+    @endif
+
+    @hasSection('desc')
+        <meta property="og:description" content="@yield('desc')" />
+    @endif
+
 
     <!-- App favicon -->
     <link rel="shortcut icon" href="{{ asset('assets/images/favicon.ico') }}">
@@ -128,5 +141,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         });
     });
 </script>
+
 
 </html>
