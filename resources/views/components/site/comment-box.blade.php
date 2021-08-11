@@ -12,6 +12,7 @@
                 <div class="media-body">
                     <form action="" method="POST">
                         @csrf
+                        @honeypot
                         <div class="form-group">
                             <label for="content">Ý kiến của bạn:</label>
                             <textarea name="content" class="form-control" rows="5"

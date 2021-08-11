@@ -10,9 +10,8 @@ use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
-use App\Models\Category;
 use Illuminate\Support\Facades\Route;
-
+use Spatie\Honeypot\ProtectAgainstSpam;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,7 +70,7 @@ Route::get('/trang-chu', [PageController::class, 'index'])->name('home');
 
 // <-- BÀI VIẾT --> //
 Route::get('bai-viet/{slug}', [PageController::class, 'post'])->name('post');
-Route::post('bai-viet/{slug}', [CommentController::class, 'store'])->name('commentPost');
+Route::post('bai-viet/{slug}', [CommentController::class, 'store'])->name('commentPost')->middleware(ProtectAgainstSpam::class);
 
 // <-- THẺ --> //
 Route::get('tag/{slug}', [PageController::class, 'tag'])->name('tag');
