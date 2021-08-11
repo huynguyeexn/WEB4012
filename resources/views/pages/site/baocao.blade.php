@@ -96,7 +96,7 @@
                                         <div>
                                             <span class="px-2 label label-primary">Admin</span>
                                             <ol class="m-0">
-                                                <li>Quản lý User <i class="mx-2 icon icon-check text-success"></li>
+                                                <li>Quản lý User <i class="mx-2 icon icon-check text-success"></i></li>
                                                 <li>Quản lý Comment <i class="mx-2 icon icon-check text-success"></i>
                                                 </li>
                                             </ol>
