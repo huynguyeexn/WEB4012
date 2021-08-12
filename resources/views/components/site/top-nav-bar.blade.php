@@ -49,12 +49,13 @@
                                     <a href="{{ route('admin.dashboard') }}" class="dropdown-item notify-item">
                                         <i class='mr-2 bx bx-customize'></i> Trang quản trị
                                     </a>
-                                @endif
+                                @else
+                                    <!-- item-->
+                                    <a href="{{ route('user') }}" class="dropdown-item notify-item">
+                                        <i class='mr-2 bx bx-user'></i> Tài khoản
+                                    </a>
 
-                                <!-- item-->
-                                <a href="{{ route('user') }}" class="dropdown-item notify-item">
-                                    <i class='mr-2 bx bx-user'></i> Tài khoản
-                                </a>
+                                @endif
 
                                 <!-- item-->
                                 <a href="javascript:void(0);" class="dropdown-item notify-item">

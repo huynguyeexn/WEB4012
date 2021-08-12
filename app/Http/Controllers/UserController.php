@@ -125,11 +125,18 @@ class UserController extends Controller
                 Toastr::error('Không thể xóa tài khoản này.', 'Không có quyền!');
                 return redirect()->route('admin.users.index');
             }
+            if ($user->is_admin) {
+                if (!\Auth::user()->is_root) {
+                    Toastr::error('Không thể xóa tài khoản này.', 'Không có quyền!');
+                    return redirect()->route('admin.users.index');
+                }
+            }
             $user->delete();
             Toastr::success('Đã xóa tài khoản.', 'Thành công!');
             return redirect()->route('admin.users.index');
         } catch (\Throwable $th) {
             //
+            throw $th;
             Toastr::error('Đã có lỗi xảy ra trong quá trình xóa.', 'Lỗi!');
             return redirect()->route('admin.users.index');
         }

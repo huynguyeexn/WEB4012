@@ -15,7 +15,7 @@
                 <li class="sidebar-item {{ Request::routeIs('admin.dashboard') ? 'active' : '' }}">
                     <a href="{{ route('admin.dashboard') }}" class='sidebar-link'>
                         <i class="fas fa-th-large "></i>
-                        <span>Dashboard</span>
+                        <span>Quản trị</span>
                     </a>
                 </li>
                 <li class="sidebar-item {{ request()->is('admin/categories*') ? 'active' : '' }}">
@@ -46,6 +46,13 @@
                     <a href="{{ route('admin.users.index') }}" class='sidebar-link'>
                         <i class='bx bx-user'></i>
                         <span>Tài khoản</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+
+                    <a href="{{ route('logout') }}" class='sidebar-link'>
+                        <i class='mr-2 bx bx-log-out'></i>
+                        <span> Đăng xuất</span>
                     </a>
                 </li>
             </ul>

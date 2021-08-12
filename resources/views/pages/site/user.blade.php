@@ -6,11 +6,15 @@
 
 <div class="mb-5 row">
     <div class="col-3">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
-                aria-controls="v-pills-home" aria-selected="true">Tài khoản</a>
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
-                aria-controls="v-pills-profile" aria-selected="false">Lịch sử đọc tin tức</a>
+        <div class="card">
+            <div class="card-body">
+                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab"
+                        aria-controls="v-pills-home" aria-selected="true">Tài khoản</a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab"
+                        aria-controls="v-pills-profile" aria-selected="false">Lịch sử đọc tin tức</a>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-9">
@@ -96,40 +100,44 @@
                     <div class="col-12">
                         <div class="card card-body">
                             <h4>Lịch sử xem</h4>
+                            @if (json_decode($user->history_read))
+                                @foreach (json_decode($user->history_read) as $key => $value)
+                                    <div class="accordion" id="{{ $key }}">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <p class="mb-0">
+                                                    <button class="text-left btn btn-block" type="button"
+                                                        data-toggle="collapse" data-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                        Ngày
+                                                        {{ \Carbon\Carbon::createFromTimestamp($key)->format('d/m/Y') }}
 
-                            @foreach (json_decode($user->history_read) as $key => $value)
-                                <div class="accordion" id="{{ $key }}">
-                                    <div class="card">
-                                        <div class="card-header" id="headingOne">
-                                            <p class="mb-0">
-                                                <button class="text-left btn btn-block" type="button"
-                                                    data-toggle="collapse" data-target="#collapseOne"
-                                                    aria-expanded="true" aria-controls="collapseOne">
-                                                    Ngày
-                                                    {{ \Carbon\Carbon::createFromTimestamp($key)->format('d/m/Y') }}
-
-                                                    (Đã đọc: {{ count($value) }})
-                                                </button>
-                                            </p>
-                                        </div>
-                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
-                                            data-parent="#{{ $key }}">
-                                            <div class="card-body">
-                                                <ul>
-                                                    @foreach (array_reverse($value) as $row)
-                                                        <li>
-                                                            <a
-                                                                href="{{ route('post', \App\Models\Post::find($row)->slug) }}">
-                                                                {{ \App\Models\Post::find($row)->title }}
-                                                            </a>
-                                                        </li>
-                                                    @endforeach
-                                                </ul>
+                                                        (Đã đọc: {{ count($value) }})
+                                                    </button>
+                                                </p>
+                                            </div>
+                                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                                data-parent="#{{ $key }}">
+                                                <div class="card-body">
+                                                    <ul>
+                                                        @foreach (array_reverse($value) as $row)
+                                                            <li>
+                                                                <a
+                                                                    href="{{ route('post', \App\Models\Post::find($row)->slug) }}">
+                                                                    {{ \App\Models\Post::find($row)->title }}
+                                                                </a>
+                                                            </li>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            @else
+                                <p>Chưa có lịch sử xem</p>
+                            @endif
+
                         </div>
                     </div>
                 </div>

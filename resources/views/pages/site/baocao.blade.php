@@ -42,6 +42,8 @@
                             </div>
                             <div class="timeline-content">
                                 <!-- tiles structure -->
+                                Website online: <a
+                                    href="https://the-news-php3.herokuapp.com/">https://the-news-php3.herokuapp.com/</a>
                             </div>
                         </div>
                         <div class="timeline-item" id="timeline-example-1">
