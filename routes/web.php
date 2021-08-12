@@ -88,6 +88,11 @@ Route::get('bao-cao', function () {
     return view('pages.site.baocao');
 })->name('baocao');
 
+// <-- TÀI KHOẢN --> //
+Route::get('tai-khoan', function () {
+    return view('pages.site.user', ['user' => \Auth::user()]);
+})->name('user')->middleware('auth');
+Route::put('tai-khoan', [PageController::class, 'updateUser'])->name('updateUser')->middleware('auth');
 /**
  *
  *

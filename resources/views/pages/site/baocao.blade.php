@@ -44,8 +44,6 @@
                                 <!-- tiles structure -->
                             </div>
                         </div>
-
-
                         <div class="timeline-item" id="timeline-example-1">
                             <div class="timeline-left">
                                 <a class="timeline-icon icon-lg" href="">
@@ -57,6 +55,17 @@
                                     <div class="tile-content">
                                         <h4 class="tile-subtitle">Assignment Final</h4>
                                         <h6 class="mb-2">(Chức năng bổ sung)</h6>
+                                        {{-- Người dùng --}}
+                                        <div>
+                                            <span class="px-2 label label-primary">Người dùng</span>
+                                            <ol class="m-0">
+                                                <li>Sửa đổi thông tin người dùng <i
+                                                        class="mx-2 icon icon-check text-success"></i></li>
+                                                <li>Lịch sử xem tin <i class="mx-2 icon icon-check text-success"></i>
+                                                </li>
+                                            </ol>
+                                        </div>
+                                        <div class="divider"></div>
                                         {{-- Chi tiết tin --}}
                                         <div>
                                             <span class="px-2 label label-primary">Chi tiết tin</span>
@@ -77,7 +86,7 @@
                                             </ol>
                                         </div>
                                         <div class="divider"></div>
-                                        {{-- Admin --}}
+                                        {{-- Tag --}}
                                         <div>
                                             <span class="px-2 label label-primary">Tag</span>
                                             <ol class="m-0">

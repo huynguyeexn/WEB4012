@@ -42,12 +42,11 @@
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
 
-    <!-- Toastr -->
-    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
-
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
 
-    {{-- <script src="{{ asset('assets/js/modernizr.min.js') }}"></script> --}}
+
+    <!-- Toastr -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 </head>
 
 <body>
@@ -100,8 +99,8 @@
 
 
 <!-- jQuery  -->
-<script defer src="{{ asset('assets/js/jquery.min.js') }}"></script>
-<script defer src="{{ asset('assets/js/popper.min.js') }}"></script>
+<script src="{{ asset('assets/js/jquery.min.js') }}"></script>
+<script src="{{ asset('assets/js/popper.min.js') }}"></script>
 <script defer src="{{ asset('assets/js/bootstrap.min.js') }}"></script>
 
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
@@ -112,9 +111,6 @@ integrity="sha512-LvYVj/X6QpABcaqJBqgfOkSjuXv81bLz+rpz0BQoEbamtLkUF2xhPNwtI/xrok
 crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-
-{!! Toastr::message() !!}
 
 <script>
     document.addEventListener("DOMContentLoaded", function() {
@@ -141,6 +137,11 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         });
     });
 </script>
+
+
+<script src="https://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+
+{!! Toastr::message() !!}
 
 
 </html>

@@ -19,7 +19,7 @@
     </a>
 
     <div class="row">
-        <div class="col-12 p-0 mt-2">
+        <div class="p-0 mt-2 col-12">
             <div style="margin-right: -10px;">
                 <div id="fb-root"></div>
                 <script crossorigin="anonymous"

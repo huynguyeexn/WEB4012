@@ -17,9 +17,6 @@
                     <div class="card-body">
                         <form action="{{ route('admin.users.update', $user->id) }}" method="POST"
                             class="form form-horizontal">
-
-
-
                             <input type="password" style="opacity: 0;position: absolute; z-index: -1">
                             @method('PUT')
                             @csrf

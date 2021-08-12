@@ -52,7 +52,7 @@
                                 @endif
 
                                 <!-- item-->
-                                <a href="javascript:void(0);" class="dropdown-item notify-item">
+                                <a href="{{ route('user') }}" class="dropdown-item notify-item">
                                     <i class='mr-2 bx bx-user'></i> Tài khoản
                                 </a>
 
